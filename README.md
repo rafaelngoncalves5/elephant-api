@@ -16,3 +16,5 @@ See [docs](https://github.com/rafaelngoncalves5/elephant-api/tree/master/docs) f
 <br/>
 
 ![ERD](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/ERD.jpg)
+
+Most of the reaserch followed the article from [yogawinetravel](https://www.yogawinetravel.com/wanderlust-wednesday-elephant-sanctuaries-orphanages-and-parks-around-the-world/)
