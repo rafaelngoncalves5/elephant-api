@@ -15,4 +15,4 @@ See [docs](https://github.com/rafaelngoncalves5/elephant-api/tree/master/docs) f
 
 <br/>
 
-![ERD](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/DER.jpg)
+![ERD](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/ERD.jpg)
