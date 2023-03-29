@@ -8,6 +8,8 @@ This API was made following the documents included in:
 
 See [docs](https://github.com/rafaelngoncalves5/elephant-api/tree/master/docs) for a deeper grasp
 
-### The models were based solely on the ERD (Chen Notation)
+### The models were based solely on a ERD (Chen Notation)
+
+<br/>
 
 ![ERD](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/DER.jpg)
