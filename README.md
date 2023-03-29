@@ -8,6 +8,14 @@
 
 See [docs](https://github.com/rafaelngoncalves5/elephant-api/tree/master/docs) for a deeper grasp
 
+### The API is represented by the following document:
+
+<br />
+
+![arch](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/arch.jpg)
+
+<hr />
+
 ### The models were based solely on a ERD (Chen Notation)
 
 <br/>
