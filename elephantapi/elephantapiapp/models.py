@@ -5,7 +5,7 @@ class Amount(models.Model):
     unities = models.IntegerField()
 
     def __str__(self):
-        return self.unities
+        return str(self.unities)
 
 class Country(models.Model):
     id_country = models.AutoField(primary_key=True)
@@ -14,12 +14,11 @@ class Country(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 class Sanctuary(models.Model):
     id_sanctuary = models.AutoField(primary_key=True)
-    fk_amount = models.ForeignKey(Amount, on_delete=models.CASCADE)
-    fk_country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    living_elephants = models.ForeignKey(Amount, on_delete=models.CASCADE)
+    location = models.ForeignKey(Country, on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
 
     def __str__(self):
