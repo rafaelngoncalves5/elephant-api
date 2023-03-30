@@ -10,8 +10,21 @@ def index(request):
 
 @csrf_exempt
 def create(request):
+
+    # Data received in the request
     amount = request.GET.get('amount')
     country = request.GET.get('country')
+    name = request.GET.get('name')
+
     if request.method == 'POST':
-        # Sanctuary = 
-        return JsonResponse({'msg': 'Welcome to the create view!', 'data': f'We received as data: {request}'})
+
+        new_amount = Amount.objects.create(unities = amount)
+        new_amount.save()
+    
+        new_country = Country(name = country)
+        new_country.save()
+
+        new_sanctuary = Sanctuary.objects.create(fk_amount = new_amount, fk_country = new_country, name = name)
+        new_sanctuary.save()
+
+        return JsonResponse({'msg': 'Congratulations! You registered {0} as a new sanctuary'.format(name), 'status': 'OK'})
