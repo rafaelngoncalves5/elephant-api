@@ -30,42 +30,44 @@ def read_sanctuary_view(request):
 
 @csrf_exempt
 def update_sanctuary_view(request):
-    if request.method == 'PUT':
-        # Get the id_sanctuary
-        id_sanctuary = request.GET.get('id_sanctuary')
+    if request.method == 'PUT' or request.method == 'POST':
+        # Get the id
+        id = request.GET.get('id')
         # Get the other fields
         name = request.GET.get('name')
         elephants_living = request.GET.get('elephants_living')
         country = request.GET.get('country')
 
-        sanctuary = get_object_or_404(Sanctuary, pk=id_sanctuary)
+        sanctuary = get_object_or_404(Sanctuary, pk=id)
 
         try:
-            selected_sanctuary = Sanctuary.objects.get(pk = sanctuary.id_sanctuary)
-            Sanctuary.objects.filter(id_sanctuary = selected_sanctuary.id_sanctuary).update(name = name, elephants_living = elephants_living, country = country)
+            selected_sanctuary = Sanctuary.objects.get(pk = sanctuary.id)
+            Sanctuary.objects.filter(id = selected_sanctuary.id).update(name = name, elephants_living = elephants_living, country = country)
             # Saving the DB
             for s in Sanctuary.objects.all():
                 s.save()
             return JsonResponse({'msg': 'Sanctuary {0} updated with success!'.format(sanctuary), 'status': 200})
 
         except(KeyError, Sanctuary.DoesNotExist):
-            return JsonResponse({'msg': 'Sanctuary with id {0} not found!'.format(id_sanctuary), 'status': 404})
+            return JsonResponse({'msg': 'Sanctuary with id {0} not found!'.format(id), 'status': 404})
 
     return JsonResponse({'msg': 'Welcome to the update page!'})
 
 @csrf_exempt
 def delete_sanctuary_view(request):
-    # Get the id_sanctuary
-    id_sanctuary = request.GET.get('id_sanctuary')
-    sanctuary = get_object_or_404(Sanctuary, pk=id_sanctuary)
 
-    try:
-        selected_sanctuary = Sanctuary.objects.get(pk = sanctuary.id_sanctuary)
-        selected_sanctuary.delete()
-        return JsonResponse({'msg': 'Sanctuary {0} deleted with success!'.format(selected_sanctuary), 'status': 200})
+    if request.method == 'DELETE' or request.method == 'POST':
+        # Get the id
+        id = request.GET.get('id')
+        sanctuary = get_object_or_404(Sanctuary, pk=id)
 
-    except(KeyError, Sanctuary.DoesNotExist):
-        return JsonResponse({'msg': 'Sanctuary with id {0} not found!'.format(id_sanctuary), 'status': 404})
-    
+        try:
+            selected_sanctuary = Sanctuary.objects.get(pk = sanctuary.id)
+            selected_sanctuary.delete()
+            return JsonResponse({'msg': 'Sanctuary {0} deleted with success!'.format(selected_sanctuary), 'status': 200})
+
+        except(KeyError, Sanctuary.DoesNotExist):
+            return JsonResponse({'msg': 'Sanctuary with id {0} not found!'.format(id), 'status': 404})
+      
 def read_country_view(request):
     return JsonResponse(Sanctuary.countries_list, safe=False)

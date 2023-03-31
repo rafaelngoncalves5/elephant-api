@@ -398,7 +398,7 @@ class Sanctuary(models.Model):
         (zimbabwe, 'Zimbabwe'),
     ]
 
-    id_sanctuary = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=80)
     elephants_living = models.IntegerField()
     country = models.CharField(
