@@ -9,6 +9,5 @@ urlpatterns = [
     path('sanctuary/read', views.read_sanctuary_view),
     path('sanctuary/update', views.update_sanctuary_view),
     path('sanctuary/delete', views.delete_sanctuary_view),
-
     path('sanctuary/country/read', views.read_country_view),
 ]
