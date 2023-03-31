@@ -405,3 +405,6 @@ class Sanctuary(models.Model):
         max_length=50,
         choices=countries_list,
     )
+
+    def __str__(self):
+        return self.name
