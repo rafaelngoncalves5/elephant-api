@@ -7,7 +7,16 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 def index_view(request):
-    return JsonResponse({ 'Elephant API': "Elephant Sanctuaries, Orphanages and Parks Around the World 🐘" })
+    return JsonResponse({ 'msg': "Welcome to Elephant API! Elephant Sanctuaries, Orphanages and Parks Around the World 🐘. See below for our available endpoints: ",                   
+    'sanctuary/create': ''' - Creates a new sanctuary, receives: name, country and elephants_living. Visit it with a GET HTTP method to get more information about how it works''',
+
+    'sanctuary/read': """- Displays all available sanctuaries in the Database. Visit it with a GET HTTP method to get more information about how it works""",
+    
+    'sanctuary/update': '''- Updates a created sanctuary, receives: id, name, country and elephants_living. Visit it with a GET HTTP method to get more information about how it works''',
+
+    'sanctuary/delete': '''- Deletes a sanctuary with id equals the received query name id. Visit it with a GET HTTP method to get more information about how it works''',
+
+    'sanctuary/country/read': '''- Displays all available countries in the Database. Visit it with a GET HTTP method to get more information about how it works''', 'status': 200})
 
 @csrf_exempt
 def create_sanctuary_view(request):
@@ -22,7 +31,7 @@ def create_sanctuary_view(request):
 
         return JsonResponse({'msg': 'Sanctuary {0} registered with success!'.format(name)})
     
-    return JsonResponse({'msg': "Welcome to the create view!"})
+    return JsonResponse({'msg': '''Welcome to the create page 🐘, this page receives a POST method with name, elephants_living and country to register a sanctuary! Url example: http://localhost:8000/sanctuary/create?name=David%20Sheldrick%20Orphanage&elephants_living=500&country=Kenya''', 'status': 200})
 
 def read_sanctuary_view(request):
     data = Sanctuary.objects.values()
@@ -60,7 +69,7 @@ def update_sanctuary_view(request):
         except(KeyError, Sanctuary.DoesNotExist):
             return JsonResponse({'msg': 'Sanctuary with id {0} not found!'.format(id), 'status': 404})
 
-    return JsonResponse({'msg': 'Welcome to the update page!'})
+    return JsonResponse({'msg': '''Welcome to the update page 🐘, this page receives a PUT or POST method with id, elephants_living, name and country. If you omit elephants_living, name and/or country, the values remain the same! Url example: http://localhost:8000/sanctuary/update?elephants_living=498&id=1&name=David%20Sheldrick%20Orphanage''', 'status': 200})
 
 @csrf_exempt
 def delete_sanctuary_view(request):
@@ -77,6 +86,8 @@ def delete_sanctuary_view(request):
 
         except(KeyError, Sanctuary.DoesNotExist):
             return JsonResponse({'msg': 'Sanctuary with id {0} not found!'.format(id), 'status': 404})
-      
+        
+    return JsonResponse({'msg': '''Welcome to the update page 🐘, this page receives a DELETE or POST method with the id of the sanctuary you want to delete! Url example: http://localhost:8000/sanctuary/delete?id=1''', 'status': 200})
+
 def read_country_view(request):
     return JsonResponse(Sanctuary.countries_list, safe=False)
