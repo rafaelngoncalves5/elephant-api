@@ -40,6 +40,15 @@ def update_sanctuary_view(request):
 
         sanctuary = get_object_or_404(Sanctuary, pk=id)
 
+        if name is None or name == '' or name == 0 or name == ' ':
+            name = sanctuary.name
+
+        if elephants_living is None or elephants_living == '' or elephants_living == 0 or elephants_living == ' ':
+            elephants_living = sanctuary.elephants_living
+
+        if country is None or country == '' or country == 0 or country == ' ':
+            country = sanctuary.country
+
         try:
             selected_sanctuary = Sanctuary.objects.get(pk = sanctuary.id)
             Sanctuary.objects.filter(id = selected_sanctuary.id).update(name = name, elephants_living = elephants_living, country = country)
