@@ -16,10 +16,10 @@ See [docs](https://github.com/rafaelngoncalves5/elephant-api/tree/master/docs) f
 
 <hr />
 
-### The models were based solely on a ERD (Chen Notation)
+### The model is represented solely by the following Entity (Chen Notation)
 
 <br/>
 
-![ERD](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/ERD.jpg)
+![entity](https://github.com/rafaelngoncalves5/elephant-api/blob/master/docs/entity.jpg)
 
 Most of the reaserch followed the article from [yogawinetravel](https://www.yogawinetravel.com/wanderlust-wednesday-elephant-sanctuaries-orphanages-and-parks-around-the-world/)
